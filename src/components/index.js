@@ -2,4 +2,6 @@
  * @author - Wokoro Douye Samuel
  */
 
-export default [];
+import rateRoutes from './rate';
+
+export default [...rateRoutes];

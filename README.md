@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/Wokoro/Etransact.svg?branch=develop)](https://travis-ci.com/Wokoro/Etransact)
 # TRANSACT API
 Transact, is a Restful api, to power Transact frontend.
 
@@ -43,8 +44,11 @@ npm start
 
 ## Features
 
-[HERE]() for more details
+**Endpoint**|**TYPE**|**DESCRIPTION**|**Query params**|**Request Params**
+-----|-----|-----|-----|-----
+/api/rates|GET|Endpoint to get currency exchange rate|base(e.g CYK), currency(CAD,ISK,PHP)|None
 
+Find documentation [here](https://etrnsact.herokuapp.com/api/docs) for more details
 ## Tests
 
 ```Bash

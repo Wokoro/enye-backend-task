@@ -60,13 +60,14 @@ export const routesLoader = (routes, router) => {
  *
  * @param {integer} code - HTTP status code to send
  *
- * @param {string} data - Data to send to the client
+ * @param {string} results - Data to send to the client
  *
  * @returns {object} Returns status code and data to client
  */
-export const sendSuccessMessage = (res, code, data) => res.status(code).send({
-  status: 'success',
-  data
+export const sendSuccessMessage = (res, code, results) => res.status(code).send({
+  status: code,
+  message: 'success',
+  results
 });
 
 /**
@@ -81,24 +82,9 @@ export const sendSuccessMessage = (res, code, data) => res.status(code).send({
  * @returns {object} Returns status code and data to client
  */
 export const sendErrorMessage = (res, code, error) => res.status(code).send({
-  status: 'error',
+  status: code,
+  message: 'error',
   error
-});
-
-/**
- * @description - A function to send client validation error message.
- *
- * @param {object} res - HTTP response object
- *
- * @param {integer} code - HTTP status code to send
- *
- * @param {string} validationError - Data to send to the client
- *
- * @returns {object} Returns status code and data to client
- */
-export const sendValidationErrorMessage = (res, code, validationError) => res.status(code).send({
-  status: 'error',
-  validationError
 });
 
 /**

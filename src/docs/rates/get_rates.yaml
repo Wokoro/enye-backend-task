@@ -1,0 +1,59 @@
+#
+# author - Wokoro Douye Samuel
+#
+
+paths:
+  /api/rates:
+    get:
+      summary: Rates return endpoint
+      tags:
+        - Rates
+      operationId: getRates
+      produces:
+        - application/json
+      parameters:
+        - name: base
+          in: query
+          type: string
+          summary: The requested home rate from the request URL query strings
+
+        - name: currency
+          in: query
+          type: string
+          summary: The specific exchange rates based on a comma-separated symbols parameter (i.e. EUR,GBP,USD)
+
+      responses:
+        200:
+          description: Successful rates returned for 'CAD,PHP' currencies
+          content: application/json
+          schema:
+            example:
+              status: 200
+              message: success
+              results:
+                base: EUR
+                date: 2021-01-15
+                rates:
+                  CAD: 1.5413
+                  PHP: 58.226
+
+        406:
+          description: Unacceptable inputs
+          content: application/json
+          schema:
+            example:
+              status: 406
+              message: error
+              error:
+                - Base currency must contain alphabets only
+                - Base currency must contain three(3) alphabets only
+                - "Currency must contain three(3) alphabets only, got: 'aj3'"
+
+        400:
+          description: Bad request, unsupported currency
+          content: application/json
+          schema:
+            example:
+              status: 400
+              message: error
+              error: Base 'NGN' is not supported.

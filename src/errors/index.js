@@ -4,7 +4,7 @@
 
 import { Http503Error } from './server.error.spec';
 import { HttpClientError, Http400Error, Http406Error } from './client.error.spec';
-import { sendErrorMessage, sendValidationErrorMessage } from '../utils';
+import { sendErrorMessage } from '../utils';
 
 import winston from '../config/winston';
 
@@ -31,11 +31,9 @@ export const notFoundError = (router) => {
 export const clientError = (router) => {
   router.use((err, req, res, next) => {
     winston.logger.error(
-      `${err.status || 500} - ${err.message} - ${req.originalUrl} - ${req.method} - ${req.ip}`
+      `${err.status || 400} - ${err.message} - ${req.originalUrl} - ${req.method} - ${req.ip}`
     );
-    if (err instanceof Http406Error) {
-      return sendValidationErrorMessage(res, err.status, err.message);
-    }
+
     if (err instanceof HttpClientError) {
       return sendErrorMessage(res, err.status, err.message);
     }

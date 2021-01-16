@@ -8,10 +8,8 @@ import parser from 'body-parser';
 import hpp from 'hpp';
 import morgan from 'morgan';
 import helmet from 'helmet';
-import toobusy from 'node-toobusy';
 
 import winston from '../config/winston';
-import { Http503Error } from '../errors/server.error.spec';
 
 /**
  * @description - Middleware to compress response to client.
@@ -60,25 +58,6 @@ export const bodyParserHandler = (router) => {
 export const morganHandler = (router) => {
   router.use(morgan('combined', { stream: winston.logger.stream }));
 };
-
-/**
- * @description - Middleware which blocks requests when server too busy.
- *
- * @param {object} router - Express router object
- *
- * @returns {void} - No return value
- */
-export const toobusyHandler = (router) => {
-  router.use((req, res, next) => {
-    try {
-      if (toobusy()) throw new Http503Error();
-      next();
-    } catch (error) {
-      next(error);
-    }
-  });
-};
-
 
 /**
  * @description - Middleware that prevents parameter pollution.
