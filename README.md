@@ -43,8 +43,11 @@ npm start
 
 ## Features
 
-[HERE]() for more details
+**Endpoint**|**TYPE**|**DESCRIPTION**|**Query params**|**Request Params**
+-----|-----|-----|-----|-----
+/api/rates|GET|Endpoint to get currency exchange rate|base(e.g CYK), currency(CAD,ISK,PHP)|None
 
+Find documentation [here](https://etrnsact.herokuapp.com/api/v1/docs) for more details
 ## Tests
 
 ```Bash

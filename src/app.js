@@ -12,7 +12,7 @@ import docs from './docs';
 const router = express.Router();
 
 const app = express();
-app.use('/api/v1', router);
+app.use('/api', router);
 
 process.on('uncaughtException', (error) => {
   console.log('Uncaught: ', error);
@@ -22,7 +22,7 @@ process.on('unhandledRejection', (error) => {
   console.log('Unhandled: ', error);
 });
 
-middlewareLoader(['cors', 'bodyparser', 'compression', 'hpp', 'helmet', 'toobusy'], router);
+middlewareLoader(['cors', 'bodyparser', 'compression', 'hpp', 'helmet'], router);
 routesLoader(routes, router);
 routesLoader(docs, router);
 errorMiddlewareLoader(['notFound', 'clientError', 'serverError'], router);

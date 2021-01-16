@@ -4,7 +4,7 @@
 
 import {
   bodyParserHandler, compressionHandler, corsHandler,
-  morganHandler, toobusyHandler, hppHandler, helmetHandler
+  morganHandler, hppHandler, helmetHandler
 } from './common.handlers';
 
 
@@ -14,6 +14,5 @@ export default {
   compression: compressionHandler,
   cors: corsHandler,
   hpp: hppHandler,
-  helmet: helmetHandler,
-  toobusy: toobusyHandler
+  helmet: helmetHandler
 };
