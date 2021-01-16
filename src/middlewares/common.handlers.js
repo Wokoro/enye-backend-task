@@ -59,7 +59,6 @@ export const morganHandler = (router) => {
   router.use(morgan('combined', { stream: winston.logger.stream }));
 };
 
-
 /**
  * @description - Middleware that prevents parameter pollution.
  *
